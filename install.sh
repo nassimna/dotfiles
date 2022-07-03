@@ -19,8 +19,6 @@ chmod +x ~/mic_over_mumble
 dnf install sddm bspwm sxhkd  rofi polybar picom thunar nitrogen conky
 # Installing Other less important Programs
 dnf install firewall-config mumble mumble-server pulseaudio pulseaudio-utils snapd
-# Installing Custom ocs-url package
-dnf install ./rpm-packages/ocs-url-3.1.0-1.fc20.x86_64.rpm
 
 #mumble 
 sudo systemctl stop mumble-server.service
