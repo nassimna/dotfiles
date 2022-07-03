@@ -30,7 +30,9 @@ sleep 20
 snap install avahi
 # Installing fonts
 dnf install fontawesome-fonts fontawesome-fonts-web
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 unzip FiraCode.zip -d /usr/share/fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
 unzip Meslo.zip -d /usr/share/fonts
 unzip LiberationMono.zip -d /usr/share/fonts
 unzip Agave.zip -d /usr/share/fonts
