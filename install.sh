@@ -16,9 +16,9 @@ mv ./bspwm/* ~/.config
 mv mic_over_mumble ~/mic_over_mumble
 chmod +x ~/mic_over_mumble
 # Installing Essential Programs 
-dnf install sddm bspwm sxhkd  rofi polybar picom thunar nitrogen conky
+dnf install sddm bspwm sxhkd  rofi polybar picom nitrogen 
 # Installing Other less important Programs
-dnf install firewall-config mumble mumble-server pulseaudio pulseaudio-utils snapd
+dnf install firewall-config mumble mumble-server pulseaudio pulseaudio-utils snapd conky catfish
 
 #mumble 
 sudo systemctl stop mumble-server.service
