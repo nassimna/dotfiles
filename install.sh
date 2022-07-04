@@ -16,14 +16,13 @@ mv ./bspwm/* ~/.config
 mv mic_over_mumble ~/mic_over_mumble
 chmod +x ~/mic_over_mumble
 # Installing Essential Programs 
-dnf install sddm bspwm sxhkd  rofi polybar picom nitrogen 
+dnf install sddm bspwm sxhkd  rofi polybar picom nitrogen alacritty
 # Installing Other less important Programs
 dnf install firewall-config mumble mumble-server pulseaudio pulseaudio-utils snapd conky catfish
-
+ln -s /var/lib/snapd/snap /snap
 #mumble 
 sudo systemctl stop mumble-server.service
-sudo systemctl disable mumble-server.service
-ln -s /var/lib/snapd/snap /snap 
+sudo systemctl disable mumble-server.service 
 sleep 20
 snap install avahi
 # Installing fonts
