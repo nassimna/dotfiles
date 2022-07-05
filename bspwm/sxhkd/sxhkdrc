@@ -1,7 +1,7 @@
-
-#Rofi
-super + F12
-    rofi-theme-selector
+#AZERTY CONFIG
+#Random wallpaper
+super + w
+    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
 
 # Cancel preselection
 super + ctrl + space
@@ -60,7 +60,7 @@ super + d
 
 #terminal
 super + Return
-    urxvt & neofetch
+    urxvt -e fish
 
 #Xkill 
 super + Escape
@@ -69,7 +69,7 @@ super + Escape
 #Keyboard dependent
 #alacritty
 super + KP_Enter
-	urxvt & neofetch
+	urxvt -e zsh
 
 #reload sxhkd:
 super + shift + s
@@ -119,7 +119,7 @@ super + p
  
  # Toggle tiled  windows
 super + t
-	bsp-layout next --layouts tall,monocle,wide
+	bsp-layout next --layouts tall,even,grid
 
  # Toggle floating  windows
 super + f
@@ -164,6 +164,6 @@ ctrl + alt + {Right,Up,Down,Left}
 ctrl + super +{Left,Down,Up,Right}
 	bspc node --{focus} {west,south,north,east}
 
-##select next window
+#Focus selected desktop
 alt + Tab
 	bspc node -f next

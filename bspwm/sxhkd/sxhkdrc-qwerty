@@ -1,7 +1,7 @@
 
-#Rofi
-super + F12
-    rofi-theme-selector
+#Random wallpaper
+super + z
+    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
 
 # Cancel preselection
 super + ctrl + space
@@ -21,9 +21,6 @@ super + shift + r
 	~/.config/bspwm/bspwmrc
 
 
-#Focus selected desktop
-alt + Tab
-	bspc desktop -f '^{1-9,10}'
 
 #Logout
 super + x
@@ -61,25 +58,25 @@ super + r
 super + d
 	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
-#alacritty
+#terminal
 super + Return
-    urxvt & neofetch
+    urxvt -e fish
 
-#Xkill
+#Xkill 
 super + Escape
     xkill
 
 #Keyboard dependent
 #alacritty
 super + KP_Enter
-	qterminal
+	urxvt -e fish
 
 #reload sxhkd:
 super + shift + s
 	pkill -USR1 -x sxhkd
 
 #Catfish
-ctrl + alt + c
+ctrl + c
      catfish
 
 #Pulse Audio Control
@@ -122,7 +119,7 @@ super + p
  
  # Toggle tiled  windows
 super + t
-	bsp-layout next --layouts tall,monocle,wide
+	bsp-layout next --layouts tall,even,grid
 
  # Toggle floating  windows
 super + f
@@ -137,11 +134,11 @@ super + m
 	bsp-layout set monocle
 
 
-#Focus selected desktop	FOR FRNECH AZERTY KEYBOARDS
+#Focus selected desktop	FOR FRNECH QWERTY KEYBOARDS
 super + {1-9,0}
     bspc desktop -f '^{1-9,10}'
 
-#Move window to selected desktop FOR AZERTY KEYBOARDS
+#Move window to selected desktop FOR QWERTY KEYBOARDS
 super + shift + {1-9,0}
     id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
 #################################################################################################################
@@ -167,6 +164,6 @@ ctrl + alt + {Right,Up,Down,Left}
 ctrl + super +{Left,Down,Up,Right}
 	bspc node --{focus} {west,south,north,east}
 
-#select next window
+#Focus selected desktop
 alt + Tab
 	bspc node -f next
