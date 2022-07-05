@@ -39,7 +39,7 @@ super + v
 
 #Browser
 super + b
-    google-chrome
+    google-chrome-stable
 
 #Conky-toggle
 super + c
@@ -63,7 +63,7 @@ super + d
 
 #alacritty
 super + Return
-    qterminal
+    urxvt & neofetch
 
 #Xkill
 super + Escape
@@ -113,40 +113,29 @@ super + y
 #BSPwm key bind#########################################################################################################
 
 #Toggle fullscreen of window
-super + f
+alt + Return
 	bspc node --state \~fullscreen
 
 # Toggle pseudo tiling of window
 super + p
-	bspc node --state \~pseudo_tiled 
+	bspc node --state \~tiled 
  
-# Increase/decrease window gap on focused desktop 
-super + bracket{left,right}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+ # Toggle tiled  windows
+super + t
+	bsp-layout next --layouts tall,monocle,wide
 
-# set the window state
+ # Toggle floating  windows
+super + f
+	bspc node --state \~floating
+
+# set the window state 
 super + space
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	bsp-layout next
 
-# Move floating window
-super + alt + {_,shift + }{Left,Down,Up,Right}
-	~/.config/bspwm/scripts/move-window {_,edge-}{west,south,north,east}
+# set the window state 
+super + m
+	bsp-layout set monocle
 
-# Focus/swap windows by direction
-super + {_,shift + }{h,j,k,l}
-	bspc node --{focus,swap} {west,south,north,east}
-
-# Flip layout vertically/horizontally
-super + {_,shift + }a
-	bspc node @/ --flip {vertical,horizontal}
-
-# Focus/swap windows by direction
-super + {Left,Down,Up,Right}
-	bspc node --{focus} {west,south,north,east}
-
-# Expand tiled space
-super + alt  {Left,Down,Up,Right}
-	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
 
 #Focus selected desktop	FOR FRNECH AZERTY KEYBOARDS
 super + {1-9,0}
@@ -156,3 +145,28 @@ super + {1-9,0}
 super + shift + {1-9,0}
     id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
 #################################################################################################################
+# # Swap window with direction
+super + shift + {h,j,k,l}
+ 	bspc node -s {west,south,north,east}
+
+# # Move a floating window
+super + {Left,Right,Up,Down}
+   xdo move {-x -20, -x +20, -y -20, -y +20}
+
+# # Expand a window by moving one of its side outward
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+
+# # Contract a window by moving one of its side inward
+ctrl + alt + {Right,Up,Down,Left}
+ 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+
+# Focus/swap windows by direction
+ctrl + super +{Left,Down,Up,Right}
+	bspc node --{focus} {west,south,north,east}
+
+#select next window
+alt + Tab
+	bspc node -f next
