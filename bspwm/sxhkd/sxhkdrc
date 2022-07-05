@@ -1,4 +1,8 @@
-#AZERTY CONFIG
+#AZERTY CONFIG 
+##
+#Start mubmle over mic
+super + alt + m 
+	~/mic_over_mumble
 #Random wallpaper
 super + w
     feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
