@@ -164,6 +164,6 @@ ctrl + alt + {Right,Up,Down,Left}
 ctrl + super +{Left,Down,Up,Right}
 	bspc node --{focus} {west,south,north,east}
 
-#Focus selected desktop
+##select next window
 alt + Tab
 	bspc node -f next
