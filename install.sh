@@ -11,7 +11,8 @@ fi
 pacman -Syu
 #PROGRAMS
 # polybar bspwm rofi dmenu fish mumble murmur zsh dunst rxvt-unicode picom sxhkd nautilus unzip
-pacman -S polybar bspwm rofi dmenu fish mumble murmur zsh dunst rxvt-unicode picom sxhkd nautilus unzip lxappearance adapta-gtk-theme scrot
+pacman -S polybar bspwm rofi dmenu  dunst  picom sxhkd rxvt-unicode fish unzip numlockx
+pacman -S mumble murmur nautilus lxappearance adapta-gtk-theme scrot nm-applet
 # MOVE EVERY THING TO HOME FOLDER ~
 
 #bsp layout
@@ -34,7 +35,8 @@ unzip Agave.zip -d /usr/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip
 unzip RobotoMono.zip -d /usr/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Noto.zip
-unzip Noto.zip -d /usr/share/fonts
+unzip Noto_Sans.zip -d /usr/share/fonts
+unzip fontawesome-free-5.15.4-desktop.zip -d /usr/share/fonts
 unzip fontawesome-free-5.15.4-desktop.zip -d /usr/share/fonts
 unzip fontawesome-free-5.15.4-web.zip -d /usr/share/fonts
 # Reloading Font
