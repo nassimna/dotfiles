@@ -1,0 +1,169 @@
+
+#Random wallpaper
+super + z
+    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
+
+# Cancel preselection
+super + ctrl + space
+	bspc node --presel-dir cancel
+
+# Move focus to other monitor
+super + BackSpace
+		bspc monitor -f next
+
+#Focus selected desktop
+super + Tab
+	bspc desktop -f '^{1-9,10}'
+
+
+#Reload bspwm
+super + shift + r
+	~/.config/bspwm/bspwmrc
+
+
+
+#Logout
+super + x
+	bspc quit
+
+#kill
+super + a
+	bspc node -c
+
+#VScode
+super + v
+	code
+
+#Browser
+super + b
+    google-chrome-stable
+
+#Conky-toggle
+super + c
+    conky-toggle
+
+#Htop
+super + h
+    htop
+
+#archlinux-logout
+super + x
+    archlinux-logout
+
+#Rofi theme selector
+super + r
+    rofi -show drun
+
+#dmenu
+super + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+#terminal
+super + Return
+    urxvt -e fish
+
+#Xkill 
+super + Escape
+    xkill
+
+#Keyboard dependent
+#alacritty
+super + KP_Enter
+	urxvt -e fish
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+#Catfish
+ctrl + c
+     catfish
+
+#Pulse Audio Control
+ctrl + alt + u
+     pavucontrol
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#Scrot
+Print
+    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+
+#screeenshooter
+ctrl + Print
+     xfce4-screenshooter
+
+#Gnome-Screenshot
+ctrl + shift + Print
+     gnome-screenshot -i
+
+#########################
+#        POLYBAR        #
+#########################
+
+#Hide polybar
+super + y
+    polybar-msg cmd toggle
+
+#BSPwm key bind#########################################################################################################
+
+#Toggle fullscreen of window
+alt + Return
+	bspc node --state \~fullscreen
+
+# Toggle pseudo tiling of window
+super + p
+	bspc node --state \~tiled 
+ 
+ # Toggle tiled  windows
+super + t
+	bsp-layout next --layouts tall,even,grid
+
+ # Toggle floating  windows
+super + f
+	bspc node --state \~floating
+
+# set the window state 
+super + space
+	bsp-layout next
+
+# set the window state 
+super + m
+	bsp-layout set monocle
+
+
+#Focus selected desktop	FOR FRNECH QWERTY KEYBOARDS
+super + {1-9,0}
+    bspc desktop -f '^{1-9,10}'
+
+#Move window to selected desktop FOR QWERTY KEYBOARDS
+super + shift + {1-9,0}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+#################################################################################################################
+# # Swap window with direction
+super + shift + {h,j,k,l}
+ 	bspc node -s {west,south,north,east}
+
+# # Move a floating window
+super + {Left,Right,Up,Down}
+   xdo move {-x -20, -x +20, -y -20, -y +20}
+
+# # Expand a window by moving one of its side outward
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+
+# # Contract a window by moving one of its side inward
+ctrl + alt + {Right,Up,Down,Left}
+ 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+
+# Focus/swap windows by direction
+ctrl + super +{Left,Down,Up,Right}
+	bspc node --{focus} {west,south,north,east}
+
+#Focus selected desktop
+alt + Tab
+	bspc node -f next
