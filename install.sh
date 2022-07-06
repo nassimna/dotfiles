@@ -11,7 +11,7 @@ fi
 pacman -Syu
 #PROGRAMS
 # polybar bspwm rofi dmenu fish mumble murmur zsh dunst rxvt-unicode picom sxhkd nautilus unzip
-pacman -S polybar bspwm rofi dmenu fish mumble murmur zsh dunst rxvt-unicode picom sxhkd nautilus unzip lxappearance adapta-gtk-theme
+pacman -S polybar bspwm rofi dmenu fish mumble murmur zsh dunst rxvt-unicode picom sxhkd nautilus unzip lxappearance adapta-gtk-theme scrot
 # MOVE EVERY THING TO HOME FOLDER ~
 
 #bsp layout
