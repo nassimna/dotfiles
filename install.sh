@@ -18,8 +18,8 @@ pacman -S mumble murmur nautilus lxappearance adapta-gtk-theme scrot nm-applet
 #bsp layout
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
 #mumble 
-systemctl stop mumble-server.service
-systemctl disable mumble-server.service 
+#systemctl stop mumble-server.service
+#systemctl disable mumble-server.service 
 #themes here https://wiki.archlinux.org/title/GTK
 
 # Installing fonts
