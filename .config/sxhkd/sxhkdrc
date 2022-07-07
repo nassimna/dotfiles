@@ -5,33 +5,6 @@ super + alt + m
 super + w
     feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
 
-# Cancel preselection
-super + ctrl + space
-	bspc node --presel-dir cancel
-
-# Move focus to other monitor
-super + BackSpace
-		bspc monitor -f next
-
-#Focus selected desktop
-super + Tab
-	bspc desktop -f '^{1-9,10}'
-
-
-#Reload bspwm
-super + shift + r
-	~/.config/bspwm/bspwmrc
-
-
-
-#Logout
-super + x
-	bspc quit
-
-#kill
-super + q
-	bspc node -c
-
 #VScode
 super + v
 	code
@@ -46,11 +19,7 @@ super + c
 
 #Htop
 super + h
-    htop
-
-#archlinux-logout
-super + x
-    archlinux-logout
+    urxvt -e htop
 
 #Rofi theme selector
 super + r
@@ -64,18 +33,13 @@ super + d
 super + Return
     urxvt -e fish
 
-#Xkill 
-super + Escape
-    xkill
+#brightness controle using brightnessctl
+XF86MonBrightness{Up,Down}
+	brightnessctl set 100{+,-}
 
-#Keyboard dependent
 #alacritty
 super + KP_Enter
-	urxvt -e zsh
-
-#reload sxhkd:
-super + shift + s
-	pkill -USR1 -x sxhkd
+	urxvt -e fish
 
 #Catfish
 ctrl + alt + c
@@ -85,22 +49,21 @@ ctrl + alt + c
 ctrl + alt + u
      pavucontrol
 
-#################################################################
-#     SCREENSHOTS
-#################################################################
-
-#Scrot
+#Scrot for SCREENSHOTS
 Print
-    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+    scrot -s --line mode=edge ~/ScreenShots/%Y-%m-%d-%H:%M:%S:%s_screenshot.png
 
-#screeenshooter
-ctrl + Print
-     xfce4-screenshooter
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 10%+
 
-#Gnome-Screenshot
-ctrl + shift + Print
-     gnome-screenshot -i
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 10%-
 
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
 #########################
 #        POLYBAR        #
 #########################
@@ -109,44 +72,60 @@ ctrl + shift + Print
 super + y
     polybar-msg cmd toggle
 
-#BSPwm key bind#########################################################################################################
+#########################
+#        BSPWM          #
+#########################
+# Move focus to other monitor
+super + BackSpace
+		bspc monitor -f next
 
-#Toggle fullscreen of window
+#Reload bspwm
+super + shift + r
+	~/.config/bspwm/bspwmrc & pkill -USR1 -x sxhkd
+
+#Logout
+super + x
+	bspc quit
+
+#kill
+super + q
+	bspc node -c
+
+# # Toggle fullscreen of window
 alt + Return
 	bspc node --state \~fullscreen
 
-# Toggle pseudo tiling of window
+# #  Toggle tiling of window
 super + p
 	bspc node --state \~tiled 
  
- # Toggle tiled  windows
+ # #  Toggle tiled  windows
 super + t
-	bsp-layout next --layouts tall,even,grid
+	bsp-layout next --layouts wide,grid
 
- # Toggle floating  windows
+ # #  Toggle floating  windows
 super + f
 	bspc node --state \~floating
 
-# set the window state 
+# #Cycle btw desktops
+super + Tab
+	bspc desktop -f '^{1-9,10}'
+
+# # cycle btw window layout 
 super + space
 	bsp-layout next
 
-# set the window state 
+# #  set the window state 
 super + m
-	bsp-layout set monocle
+	bsp-layout next --layouts monocle,grid
 
-
-#Focus selected desktop	FOR FRNECH AZERTY KEYBOARDS
+# # Focus selected desktop	FOR FRNECH AZERTY KEYBOARDS
 super + {ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
     bspc desktop -f '^{1-9,10}'
 
-#Move window to selected desktop FOR AZERTY KEYBOARDS
+# # Move window to selected desktop FOR AZERTY KEYBOARDS
 super + shift + {ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
-    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
-#################################################################################################################
-# # Swap window with direction
-super + shift + {h,j,k,l}
- 	bspc node -s {west,south,north,east}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}
 
 # # Move a floating window
 super + {Left,Right,Up,Down}
@@ -156,16 +135,22 @@ super + {Left,Right,Up,Down}
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-
 # # Contract a window by moving one of its side inward
 ctrl + alt + {Right,Up,Down,Left}
  	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-
-# Focus/swap windows by direction
+# # Focus/swap windows by direction
 ctrl + super +{Left,Down,Up,Right}
 	bspc node --{focus} {west,south,north,east}
 
-#Focus selected desktop
+# # Switch btw window 
 alt + Tab
-	bspc node -f next
+	bspc node -f next.local 
+
+# # Swap window by direction on tited mode 
+super + shift + {Left,Down,Up,Right}
+ 	bspc node -s {west,south,north,east}
+
+# Lock the screen
+super + shift + l
+	betterlockscreen -l
