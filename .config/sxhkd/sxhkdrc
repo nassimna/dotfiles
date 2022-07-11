@@ -3,7 +3,7 @@ super + alt + m
 	urxvt -e ~/mic_over_mumble
 #Random wallpaper
 super + w
-    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
+    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers*
 
 #VScode
 super + v
@@ -11,8 +11,7 @@ super + v
 
 #Browser
 super + b
-    google-chrome-stable
-
+    brave
 #Conky-toggle
 super + c
     conky-toggle
@@ -45,7 +44,7 @@ super + KP_Enter
 ctrl + alt + c
      catfish
 
-#Pulse Audio Control
+#Pulse Audio Controler
 ctrl + alt + u
      pavucontrol
 
@@ -55,15 +54,15 @@ Print
 
 #Raises volume
 XF86AudioRaiseVolume
-    amixer set Master 10%+
+    pactl -- set-sink-volume 0 +10%
 
 #Lowers volume
 XF86AudioLowerVolume
-    amixer set Master 10%-
+    pactl -- set-sink-volume 0 -10%
 
 #Mute
 XF86AudioMute
-    amixer -D pulse set Master 1+ toggle
+    pactl set-sink-mute 0 toggle
 #########################
 #        POLYBAR        #
 #########################
@@ -99,9 +98,13 @@ alt + Return
 super + p
 	bspc node --state \~tiled 
  
+  # #  Toggle tiled  windows
+super + g
+	bsp-layout next --layouts grid
+
  # #  Toggle tiled  windows
 super + t
-	bsp-layout next --layouts wide,grid
+	bsp-layout next --layouts tall
 
  # #  Toggle floating  windows
 super + f
@@ -154,3 +157,4 @@ super + shift + {Left,Down,Up,Right}
 # Lock the screen
 super + shift + l
 	betterlockscreen -l
+	
