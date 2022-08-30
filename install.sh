@@ -11,15 +11,18 @@ fi
 pacman -Syu
 #PROGRAMS
 # polybar bspwm rofi dmenu fish mumble murmur zsh dunst rxvt-unicode picom sxhkd nautilus unzip
-pacman -S polybar bspwm rofi dmenu  dunst  picom sxhkd rxvt-unicode fish unzip numlockx
-pacman -S mumble murmur nautilus lxappearance adapta-gtk-theme scrot nm-applet
+pacman -S polybar bspwm rofi dmenu  dunst  picom sxhkd rxvt-unicode fish unzip numlockx mumble murmur nautilus lxappearance adapta-gtk-theme scrot nm-applet okular mailspring nomacs htop code
+
 # MOVE EVERY THING TO HOME FOLDER ~
 
 #bsp layout
 curl https://raw.githubusercontent.com/phenax/bsp-layout/master/install.sh | bash -;
+
+
+
 #mumble 
-#systemctl stop mumble-server.service
-#systemctl disable mumble-server.service 
+systemctl stop mumble-server.service
+systemctl disable mumble-server.service 
 #themes here https://wiki.archlinux.org/title/GTK
 
 # Installing fonts
@@ -43,4 +46,6 @@ unzip fontawesome-free-5.15.4-web.zip -d /usr/share/fonts
 fc-cache -vf
 # Removing zip Files
 #rm ./FiraCode.zip ./Meslo.zip
-
+git clone https://gitlab.com/dwt1/shell-color-scripts.git
+cd shell-color-scripts
+make install

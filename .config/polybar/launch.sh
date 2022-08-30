@@ -40,6 +40,7 @@ case $desktop in
     if type "xrandr" > /dev/null; then
       for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
         MONITOR=$m polybar --reload mainbar-openbox -c ~/.config/polybar/config &
+        
       done
     else
     polybar --reload mainbar-openbox -c ~/.config/polybar/config &

@@ -1,9 +1,34 @@
-#Start mubmle over mic
-super + alt + m 
-	urxvt -e ~/mic_over_mumble
+
 #Random wallpaper
-super + w
-    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers*
+super + z
+    feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/*
+
+# Cancel preselection
+super + ctrl + space
+	bspc node --presel-dir cancel
+
+# Move focus to other monitor
+super + BackSpace
+		bspc monitor -f next
+
+#Focus selected desktop
+super + Tab
+	bspc desktop -f '^{1-9,10}'
+
+
+#Reload bspwm
+super + shift + r
+	~/.config/bspwm/bspwmrc
+
+
+
+#Logout
+super + x
+	bspc quit
+
+#kill
+super + a
+	bspc node -c
 
 #VScode
 super + v
@@ -11,14 +36,19 @@ super + v
 
 #Browser
 super + b
-    brave
+    google-chrome-stable
+
 #Conky-toggle
 super + c
     conky-toggle
 
 #Htop
 super + h
-    urxvt -e htop
+    htop
+
+#archlinux-logout
+super + x
+    archlinux-logout
 
 #Rofi theme selector
 super + r
@@ -32,37 +62,43 @@ super + d
 super + Return
     urxvt -e fish
 
-#brightness controle using brightnessctl
-XF86MonBrightness{Up,Down}
-	brightnessctl set 100{+,-}
+#Xkill 
+super + Escape
+    xkill
 
+#Keyboard dependent
 #alacritty
 super + KP_Enter
 	urxvt -e fish
 
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
 #Catfish
-ctrl + alt + c
+ctrl + c
      catfish
 
-#Pulse Audio Controler
+#Pulse Audio Control
 ctrl + alt + u
      pavucontrol
 
-#Scrot for SCREENSHOTS
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#Scrot
 Print
-    scrot -s --line mode=edge ~/ScreenShots/%Y-%m-%d-%H:%M:%S:%s_screenshot.png
+    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
 
-#Raises volume
-XF86AudioRaiseVolume
-    pactl -- set-sink-volume 0 +10%
+#screeenshooter
+ctrl + Print
+     xfce4-screenshooter
 
-#Lowers volume
-XF86AudioLowerVolume
-    pactl -- set-sink-volume 0 -10%
+#Gnome-Screenshot
+ctrl + shift + Print
+     gnome-screenshot -i
 
-#Mute
-XF86AudioMute
-    pactl set-sink-mute 0 toggle
 #########################
 #        POLYBAR        #
 #########################
@@ -71,64 +107,44 @@ XF86AudioMute
 super + y
     polybar-msg cmd toggle
 
-#########################
-#        BSPWM          #
-#########################
-# Move focus to other monitor
-super + BackSpace
-		bspc monitor -f next
+#BSPwm key bind#########################################################################################################
 
-#Reload bspwm
-super + shift + r
-	~/.config/bspwm/bspwmrc & pkill -USR1 -x sxhkd
-
-#Logout
-super + x
-	bspc quit
-
-#kill
-super + a
-	bspc node -c
-
-# # Toggle fullscreen of window
+#Toggle fullscreen of window
 alt + Return
 	bspc node --state \~fullscreen
 
-# #  Toggle tiling of window
+# Toggle pseudo tiling of window
 super + p
 	bspc node --state \~tiled 
  
-  # #  Toggle tiled  windows
-super + g
-	bsp-layout next --layouts grid
-
- # #  Toggle tiled  windows
+ # Toggle tiled  windows
 super + t
-	bsp-layout next --layouts tall
+	bsp-layout next --layouts tall,even,grid
 
- # #  Toggle floating  windows
+ # Toggle floating  windows
 super + f
 	bspc node --state \~floating
 
-# #Cycle btw desktops
-super + Tab
-	bspc desktop -f '^{1-9,10}'
-
-# # cycle btw window layout 
+# set the window state 
 super + space
 	bsp-layout next
 
-# #  set the window state 
+# set the window state 
 super + m
-	bsp-layout next --layouts monocle,grid
+	bsp-layout set monocle
 
-# # Focus selected desktop	FOR FRNECH AZERTY KEYBOARDS
+
+#Focus selected desktop	FOR FRNECH QWERTY KEYBOARDS
 super + {1-9,0}
     bspc desktop -f '^{1-9,10}'
 
-# # Move window to selected desktop FOR AZERTY KEYBOARDS
+#Move window to selected desktop FOR QWERTY KEYBOARDS
 super + shift + {1-9,0}
-    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}
+#################################################################################################################
+# # Swap window with direction
+super + shift + {h,j,k,l}
+ 	bspc node -s {west,south,north,east}
 
 # # Move a floating window
 super + {Left,Right,Up,Down}
@@ -138,23 +154,16 @@ super + {Left,Right,Up,Down}
 super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
+
 # # Contract a window by moving one of its side inward
 ctrl + alt + {Right,Up,Down,Left}
  	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# # Focus/swap windows by direction
+
+# Focus/swap windows by direction
 ctrl + super +{Left,Down,Up,Right}
 	bspc node --{focus} {west,south,north,east}
 
-# # Switch btw window 
+#Focus selected desktop
 alt + Tab
-	bspc node -f next.local 
-
-# # Swap window by direction on tited mode 
-super + shift + {Left,Down,Up,Right}
- 	bspc node -s {west,south,north,east}
-
-# Lock the screen
-super + shift + l
-	betterlockscreen -l
-	
+	bspc node -f next

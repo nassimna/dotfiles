@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #### AUTOSTART ####
-
+gammy&
 picom &
 nm-applet&
 numlockx &
@@ -10,18 +10,19 @@ $HOME/.config/polybar/launch.sh &
 xrdb -load $HOME/.config/.Xresources &
 dunst -conf $HOME/.config/dunst/dunstrc &
 feh --bg-fill --randomize $HOME/stuff/pictures/wallpapers/* &
+#feh --bg-fill --randomize $HOME/stuff/wallpaper-master/* &
 $HOME/.config/bspwm/autostart.sh &
 # Workspaces
-bspc monitor -d I II III IV V
+bspc monitor -d I II III IV V VI 
 
 #BSPWM configuration
-#bspc config border_radius       8
+#bspc config border_radius        8
 bspc config border_width         2
-bspc config window_gap           16
-bspc config top_padding          25
-bspc config bottom_padding       10
-bspc config left_padding         10
-bspc config right_padding        10
+bspc config window_gap           8
+bspc config top_padding          30
+bspc config bottom_padding       8
+bspc config left_padding         8
+bspc config right_padding        8
 bspc config single_monocle       true
 #bspc config click_to_focus       true
 bspc config split_ratio          0.618
@@ -36,5 +37,9 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
-bspc config normal_border_color "#2e3440"
-bspc config focused_border_color "#2e3440"
+bspc config normal_border_color "#ff79c6"
+bspc config active_border_color "#bd93f9"
+bspc config focused_border_color "#bd93f9"
+bspc config presel_feedback_color "#6272a4"
+
+
