@@ -81,8 +81,9 @@ font-1 = "FontAwesome:size=10;3"
 font-2 = "Noto Sans:size=10;3"
 font-3 = "Noto Sans Mono:size=10;3"
 modules-left = bspwm2
-modules-center = wireless-network pavolume temperature memory cpu date battery
-modules-right = uptime
+;wireless-network temperature xwindow
+modules-center =  memory cpu date 
+modules-right = battery uptime pavolume
 tray-detached = false
 tray-offset-x = 0
 tray-offset-y = 0
@@ -93,8 +94,6 @@ tray-position = right
 tray-background = ${colors.background}
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-
-
 
 ################################################################################
 ################################################################################
@@ -133,57 +132,7 @@ label-empty = 
 label-empty-padding = 2
 label-empty-foreground = ${colors.black}
 label-empty-background = ${colors.background}
-[module/bspwm]
-type = internal/bspwm
-enable-click = true
-enable-scroll = true
-reverse-scroll = true
-pin-workspaces = true
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-ws-icon-default = " "
-format = <label-state> <label-mode>
-label-focused = %icon%
-label-focused-background = ${colors.background}
-label-focused-underline= #6790eb
-label-focused-padding = 4
-label-focused-foreground = #6790EB
-label-occupied = %icon%
-label-occupied-padding = 2
-label-occupied-background = ${colors.background}
-label-occupied-foreground = #6790EB
-label-urgent = %icon%
-label-urgent-padding = 2
-label-empty = %icon%
-label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
-label-empty-background = ${colors.background}
-label-monocle = "  "
-label-monocle-foreground = ${colors.foreground}
-label-tiled = "  "
-label-tiled-foreground = ${colors.foreground}
-label-fullscreen = "  "
-label-fullscreen-foreground = ${colors.foreground}
-label-floating = "  "
-label-floating-foreground = ${colors.foreground}
-label-pseudotiled = "  "
-label-pseudotiled-foreground = ${colors.foreground}
-label-locked = "  "
-label-locked-foreground = ${colors.foreground}
-label-sticky = "  "
-label-sticky-foreground = ${colors.foreground}
-label-private =  "     "
-label-private-foreground = ${colors.foreground}
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+
 
 ################################################################################
 ###############################################################################
